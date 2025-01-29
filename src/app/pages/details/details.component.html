@@ -1,3 +1,23 @@
-<p>details works!</p>
-
-<button (click)="goBack()">Retour à la page d'accueil</button>
+<div class="container">
+  <div class="titleDetails">
+    <h1>{{countryName}}</h1>
+  </div>
+  <div class="infoDetailsCard">
+    <div class="numberOfEntriesCard">
+      <p>Number of entries</p>
+      {{getTotalParticipations()}}
+    </div>
+    <div class="totalNumberMedalsCard">
+      <p>Total number medals</p>
+      {{getTotalMedals()}}
+    </div>
+    <div class="totalNumberOfAthletesCard">
+      <p>Total number of athletes</p>
+      {{getTotalAthletes()}}
+    </div>
+  </div>
+  <div class="lineChartGraph">
+    <div echarts [options]="lineChartOption" class="chart"></div>
+  </div>
+</div>
+<button (click)="goBack()" >🔙</button>
