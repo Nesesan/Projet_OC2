@@ -1,23 +1,29 @@
 <div class="container">
   <div class="titleCard">
-    <H1>Medals per country</H1>
+    <h1>Medals per country</h1>
   </div>
+
+  <div *ngIf="isLoading$ | async" class="loading">Loading...</div>
+
+  <div *ngIf="errorMessage$ | async as error" class="error-message">
+    {{ error }}
+  </div>
+
   <div class="InfoCards" *ngIf="olympics$ | async as olympics">
     <div class="numberOfJOsCard">
       <p>Number of JOs</p>
-      <div class="values">
-      {{getOlympicGamesCount(olympics)}}
+      <div class="values">{{ getOlympicGamesCount(olympics) }}</div>
     </div>
 
-    </div>
     <div class="numberOfCountriesCard">
       <p>Number of Countries</p>
       <div class="values">
-        <span>{{ (olympics$ | async)?.length }}</span>
+        <span>{{ olympics.length }}</span>
       </div>
     </div>
   </div>
-    <div class="pieChartGraph">
-      <div echarts [options]="pieChartOptions" class="chart" (chartClick)="onChartClick($event)"></div>
-    </div>
+
+  <div class="pieChartGraph" *ngIf="olympics$ | async">
+    <div echarts [options]="pieChartOptions" class="chart" (chartClick)="onChartClick($event)"></div>
+  </div>
 </div>

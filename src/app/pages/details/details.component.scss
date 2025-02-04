@@ -1,66 +1,64 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+}
 
 .container {
   text-align: center;
-  margin: 0 auto;
-  max-width: 90vw;
+  margin: auto 10%;
+  max-width: 80vw;
 }
-
 
 .titleDetails {
   font-family: 'Montserrat', sans-serif;
-  background-color: rgb(74, 130, 141);
+  background-color: rgb(74,130,141);
   color: white;
-  border-radius: 0.8em;
-  margin: auto ;
-  width: 80%;
-  font-size: 1.5rem;
+  border-radius: 10px;
+  margin: 5% auto 3%;
+  width: 40vw;
+  font-size: 2em;
   text-align: center;
   font-weight: bold;
-  white-space: normal;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
 }
 
-
 .infoDetailsCard {
-  font-family: 'Montserrat', sans-serif;
   display: flex;
-  gap: 4%;
-  justify-content: center;
+  gap: 3%;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
   margin-top: 2rem;
 }
 
-
 .totalNumberMedalsCard,
 .totalNumberOfAthletesCard,
 .numberOfEntriesCard {
-  border: 0.2em solid rgb(74, 130, 141);
-  border-radius: 0.8em;
-  width: 30%;
+  border: 3px solid #75A8ACFF;
+  border-radius: 10px;
+  flex: 1 1 30%;
   min-width: 150px;
   text-align: center;
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1.5em;
   background: white;
-  padding: 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.5rem;
+  padding: 1%;
 }
 
+.values {
+  font-weight: bolder;
+  font-size: 1.3em;
+}
 
 p {
   color: gray;
-  margin: 0;
+  margin: 0 0 1% 0;
 }
-
 
 .lineChartGraph {
   margin: auto;
-  max-width: 90vw;
+  max-width: 70vw;
   padding-top: 2rem;
 }
-
 
 @media screen and (max-width: 1024px) {
   .titleDetails {
@@ -68,10 +66,18 @@ p {
     font-size: 1.3rem;
   }
 
+  .infoDetailsCard {
+    display: flex;
+    justify-content: space-between;
+    gap: 2%;
+  }
+
   .totalNumberMedalsCard,
   .totalNumberOfAthletesCard,
   .numberOfEntriesCard {
     width: 30%;
+    font-size: 1.2rem;
+    padding: 1% 0;
   }
 }
 
@@ -83,13 +89,13 @@ p {
   }
 
   .infoDetailsCard {
-    gap: 2rem;
+    gap: 2vw;
   }
 
   .totalNumberMedalsCard,
   .totalNumberOfAthletesCard,
   .numberOfEntriesCard {
-    width: 30%;
+    width: 30vw;
     font-size: 1.1rem;
   }
 
@@ -98,8 +104,7 @@ p {
   }
 }
 
-
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 425px) {
   .titleDetails {
     width: 90%;
     font-size: 1rem;
@@ -116,7 +121,7 @@ p {
   .totalNumberMedalsCard,
   .totalNumberOfAthletesCard,
   .numberOfEntriesCard {
-    width: 80%;
+    width: 80vw;
     font-size: 1rem;
     padding: 1.2rem;
   }

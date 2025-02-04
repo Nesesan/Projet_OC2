@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="titleDetails">
     <h1>{{countryName}}</h1>
@@ -5,15 +6,21 @@
   <div class="infoDetailsCard">
     <div class="numberOfEntriesCard">
       <p>Number of entries</p>
-      {{getTotalParticipations()}}
+      <div class="values">
+        {{getTotalParticipations()}}
+      </div>
     </div>
     <div class="totalNumberMedalsCard">
       <p>Total number medals</p>
-      {{getTotalMedals()}}
+      <div class="values">
+        {{getTotalMedals()}}
+      </div>
     </div>
     <div class="totalNumberOfAthletesCard">
       <p>Total number of athletes</p>
-      {{getTotalAthletes()}}
+      <div class="values">
+        {{getTotalAthletes()}}
+      </div>
     </div>
   </div>
   <div class="lineChartGraph">
