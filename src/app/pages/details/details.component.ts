@@ -49,7 +49,7 @@ export class DetailsComponent implements OnInit {
     this.lineChartOption = {
       tooltip: {
         trigger: 'item',
-        formatter: "{b} <br/> <img src=\"assets/medaille.png\" alt=\"medal\" style=\"width: 24px; height: 24px; vertical-align: middle;\" />{c}",
+        formatter: "{b} <br/> Medals: {c}",
         backgroundColor: '#4e828e',
         borderColor: '#4e828e',
         textStyle: {
