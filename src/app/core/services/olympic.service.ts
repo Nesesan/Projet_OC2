@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import {Olympic} from "../models/Olympic";
+import { Olympic } from '../models/Olympic';
 
 @Injectable({
   providedIn: 'root',
@@ -10,23 +10,38 @@ import {Olympic} from "../models/Olympic";
 export class OlympicService {
   private olympicUrl = './assets/mock/olympic.json';
   private olympics$ = new BehaviorSubject<Olympic[] | null>(null);
+  private isLoading$ = new BehaviorSubject<boolean>(false);
+  private errorMessage$ = new BehaviorSubject<string | null>(null);
 
   constructor(private http: HttpClient) {}
 
-  loadInitialData() {
+  loadInitialData(): Observable<Olympic[]> {
+    this.isLoading$.next(true);
+    this.errorMessage$.next(null);
+
     return this.http.get<Olympic[]>(this.olympicUrl).pipe(
-      tap((value) => this.olympics$.next(value)),
-      catchError((error, caught) => {
-        // TODO: improve error handling
+      tap((value) => {
+        this.olympics$.next(value);
+        this.isLoading$.next(false);
+      }),
+      catchError((error: unknown) => {
         console.error(error);
-        // can be useful to end loading state and let the user know something went wrong
-        this.olympics$.next(null);
-        return caught;
+        this.errorMessage$.next('Failed to load Olympic data');
+        this.isLoading$.next(false);
+        return throwError(() => error);
       })
     );
   }
 
-  getOlympics() {
+  getOlympics(): Observable<Olympic[] | null> {
     return this.olympics$.asObservable();
+  }
+
+  getLoadingStatus(): Observable<boolean> {
+    return this.isLoading$.asObservable();
+  }
+
+  getErrorMessage(): Observable<string | null> {
+    return this.errorMessage$.asObservable();
   }
 }

@@ -1,3 +1,4 @@
+
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {OlympicService} from "../../core/services/olympic.service";
@@ -26,17 +27,17 @@ export class DetailsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute) {}
 
-ngOnInit() {
+  ngOnInit() {
     this.countryName = this.route.snapshot.paramMap.get('country') || '';
 
-  this.olympicService.getOlympics().pipe(take(1)).subscribe((olympics: Olympic[] | null ) => {
-    const country = olympics?.find((c) => c.country === this.countryName);
-    if (country) {
-      this.countryData = country;
-      this.initializeChartData(country);  // Initialiser les données du graphique
-    }
-  });
-}
+    this.olympicService.getOlympics().pipe(take(1)).subscribe((olympics: Olympic[] | null ) => {
+      const country = olympics?.find((country) => country.country === this.countryName);
+      if (country) {
+        this.countryData = country;
+        this.initializeChartData(country);
+      }
+    });
+  }
   initializeChartData(country: Olympic): void {
     const participationData = country.participations.map((participation) => ({
       year: participation.year,
@@ -47,17 +48,16 @@ ngOnInit() {
 
     this.lineChartOption = {
       tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-          type: 'cross',
-          label: {
-            backgroundColor: 'transparent',
-          },
-        },
+        trigger: 'item',
+        formatter: "{b} <br/> Medals: {c}",
+        backgroundColor: '#4e828e',
+        borderColor: '#4e828e',
+        textStyle: {
+          color: 'white',
+          fontSize: '16px',
+        }
       },
       xAxis: {
-        name: 'Years',
-        type: 'category',
         data: participationData.map((data) => data.year),
         boundaryGap: false,
       },
@@ -79,7 +79,7 @@ ngOnInit() {
         },
       ],
     };
-}
+  }
 
   goBack() {
     this.router.navigate(['/']);
