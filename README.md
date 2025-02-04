@@ -42,7 +42,7 @@ src/app/components/ : Composants représentant différentes sections du dashboar
 src/app/models/ : Modèles pour typer les données récupérées via les API.
 src/assets/ : Contient les images et fichiers statiques utilisés dans l'application.
 
-##Bonnes pratiques
+## Bonnes pratiques
 
 Ce projet respecte les bonnes pratiques Angular suivantes :
 
@@ -51,7 +51,7 @@ Ce projet respecte les bonnes pratiques Angular suivantes :
 - Unsubscription des observables dans les composants pour éviter les fuites de mémoire.
 - Typage strict du code, en évitant l'utilisation de any.
 
-##Développement & Contribution
+## Développement & Contribution
 
 Si vous souhaitez contribuer à ce projet, voici la procédure à suivre :
 
