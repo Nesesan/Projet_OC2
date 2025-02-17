@@ -19,7 +19,8 @@ export class HomeComponent implements OnInit {
 
   pieChartOptions!: EChartsOption;
 
-  constructor(private olympicService: OlympicService, private router: Router) {}
+  constructor(private olympicService: OlympicService,
+              private router: Router) {}
 
   ngOnInit(): void {
     this.isLoading$ = this.olympicService.getLoadingStatus();

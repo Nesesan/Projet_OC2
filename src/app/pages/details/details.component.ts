@@ -5,6 +5,7 @@ import {OlympicService} from "../../core/services/olympic.service";
 import {Olympic} from "../../core/models/Olympic";
 import {take} from "rxjs";
 import {NgxEchartsDirective} from "ngx-echarts";
+import {EChartsOption} from "echarts";
 
 @Component({
   selector: 'app-details',
@@ -20,7 +21,7 @@ export class DetailsComponent implements OnInit {
   countryName: string = '';
   countryData: Olympic | null = null;
   medalDistribution: {year: number, medals: number}[] = [];
-  lineChartOption: any;
+  lineChartOption!: EChartsOption;
 
   constructor(
     private olympicService: OlympicService,
